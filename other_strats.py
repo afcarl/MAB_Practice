@@ -5,6 +5,9 @@ from pymc import rbeta
 rand = np.random.rand
 beta = stats.beta
 
+########################
+# Bandit's Structure
+
 class GeneralBanditStrat( object ):	
     """
     Implements a online, learning strategy to solve
@@ -63,7 +66,32 @@ class GeneralBanditStrat( object ):
     def max_mean(self):
         """pick the bandit with the current best observed proportion of winning """
         return np.argmax( self.wins / ( self.trials +1 ) )
+
+    
+class Bandits(object):
+    """
+    This class represents N bandits machines.
+
+    parameters:
+        p_array: a (n,) Numpy array of probabilities >0, <1.
+
+    methods:
+        pull( i ): return the results, 0 or 1, of pulling 
+                   the ith bandit.
+    """
+    def __init__(self, p_array):
+        self.p = p_array
+        self.optimal = np.argmax(p_array)
         
+    def pull( self, i ):
+        #i is which arm to pull
+        return rand() < self.p[i]
+    
+    def __len__(self):
+        return len(self.p)
+
+ ######################
+ # Bandit algorithms / strategies       
 def random_choice( self):
     return np.random.randint( 0, len( self.wins ) ) # len is num of machines
     
@@ -87,6 +115,9 @@ def ucb1(self):
         UCBs = means + np.sqrt(2*np.log(self.N)/(self.trials))
         return np.argmax(UCBs)
 
+########################
+# Performance assessment
+
 def regret( probabilities, choices ):
     w_opt = probabilities.max()
     return ( w_opt - probabilities[choices.astype(int)] ).cumsum()
@@ -95,25 +126,3 @@ def optimal( probabilities, choices ):
     # add up the total show of opitmal in choices divide by len of choices
     print float(list(choices).count(bandits.optimal)) / len(choices))
     return float(list(choices).count(bandits.optimal) / len(choices))
-    
-class Bandits(object):
-    """
-    This class represents N bandits machines.
-
-    parameters:
-        p_array: a (n,) Numpy array of probabilities >0, <1.
-
-    methods:
-        pull( i ): return the results, 0 or 1, of pulling 
-                   the ith bandit.
-    """
-    def __init__(self, p_array):
-        self.p = p_array
-        self.optimal = np.argmax(p_array)
-        
-    def pull( self, i ):
-        #i is which arm to pull
-        return rand() < self.p[i]
-    
-    def __len__(self):
-        return len(self.p)
