@@ -115,6 +115,9 @@ def ucb1(self):
         UCBs = means + np.sqrt(2*np.log(self.N)/(self.trials))
         return np.argmax(UCBs)
 
+def softmax(self):
+    pass
+
 ########################
 # Performance assessment
 
