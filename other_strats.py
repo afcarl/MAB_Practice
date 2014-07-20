@@ -87,6 +87,14 @@ def ucb1(self):
         UCBs = means + np.sqrt(2*np.log(self.N)/(self.trials))
         return np.argmax(UCBs)
 
+def regret( probabilities, choices ):
+    w_opt = probabilities.max()
+    return ( w_opt - probabilities[choices.astype(int)] ).cumsum()
+
+def optimal( probabilities, choices ):
+    # add up the total show of opitmal in choices divide by len of choices
+    print float(list(choices).count(bandits.optimal)) / len(choices))
+    return float(list(choices).count(bandits.optimal) / len(choices))
     
 class Bandits(object):
     """
