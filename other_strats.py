@@ -116,7 +116,16 @@ def ucb1(self):
         return np.argmax(UCBs)
 
 def softmax(self):
-    pass
+    tau = 1. / np.log(self.N + 2.)
+    probs = np.exp((self.wins + 1.) / (self.trials + 1.) / tau) 
+    probs = probs / probs.sum()
+    decision = random.random()
+    accum = 0
+    for p in xrange(len(probs)):
+        accum += probs[p]
+        if accum > decision:
+            return p
+    return len(probs) - 1
 
 ########################
 # Performance assessment
