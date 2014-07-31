@@ -13,3 +13,4 @@ MAB outperforms A/B
 ### Workbooks
 
 [AB_WB](http://nbviewer.ipython.org/github/nyghtowl/MAB_Practice/blob/master/AB_WB.ipynb)
+[MAB_WB](http://nbviewer.ipython.org/github/nyghtowl/MAB_Practice/blob/master/MAB_WB.ipynb)
