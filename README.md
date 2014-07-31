@@ -9,3 +9,7 @@ Practice AB and multi-armed bandit.
 * epsilon first / [UCB](http://www.chrisstucchio.com/blog/2012/bandit_algorithms_vs_ab.html)
 
 MAB outperforms A/B
+
+### Workbooks
+
+[AB_WB](http://nbviewer.ipython.org/github/nyghtowl/MAB_Practice/blob/master/AB_WB.ipynb)
