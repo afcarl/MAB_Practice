@@ -14,3 +14,7 @@ MAB outperforms A/B
 
 [AB_WB](http://nbviewer.ipython.org/github/nyghtowl/MAB_Practice/blob/master/AB_WB.ipynb)
 [MAB_WB](http://nbviewer.ipython.org/github/nyghtowl/MAB_Practice/blob/master/MAB_WB.ipynb)
+
+
+Pointers
+  * When scaling, swap out bandit list values to a dictionary or pandas DF.
